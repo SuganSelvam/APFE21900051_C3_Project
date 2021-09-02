@@ -2,6 +2,10 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalTime;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 class RestaurantServiceTest {
 
@@ -48,5 +52,36 @@ class RestaurantServiceTest {
         service.addRestaurant("Pumpkin Tales","Chennai",LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
+
+//    Requirement :
+//    A method should take List of String as Input and return Order Total for the selected Items from Menu
+//    Case 1 : When List has multiple item should return total of all items
+//    Case 2 : When List has one item it will return that items amount
+//    Case 3 : When List is empty it should return 0
+
+    @Test
+    public void show_total_of_order_when_list_is_greater_than_1(){
+        List<String> items = null;
+        items.add("Vegetable lasagne");
+        items.add("Sweet corn soup");
+        int result = service.orderTotalFromCart(items);
+        assertEquals(388,result);
+    }
+
+    @Test
+    public void show_rate_of_selected_item_when_list_is_equal_than_1(){
+        List<String> items = null;
+        items.add("Vegetable lasagne");
+        int result = service.orderTotalFromCart(items);
+        assertEquals(269,result);
+    }
+
+    @Test
+    public void show_total_when_no_item_selected_should_return_0() {
+        List<String> items = null;
+        int result = service.orderTotalFromCart(items);
+        assertEquals(0,result);
+    }
+
 
 }

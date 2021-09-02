@@ -29,4 +29,10 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public int orderTotalFromCart(List<String> items){
+
+        return 0;
+    }
+
 }
