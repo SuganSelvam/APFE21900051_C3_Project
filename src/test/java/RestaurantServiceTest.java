@@ -2,10 +2,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalTime;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 class RestaurantServiceTest {
 
@@ -61,25 +58,25 @@ class RestaurantServiceTest {
 
     @Test
     public void show_total_of_order_when_list_is_greater_than_1(){
-        List<String> items = null;
+        List<String> items = new ArrayList<String>();        ;
         items.add("Vegetable lasagne");
         items.add("Sweet corn soup");
-        int result = service.orderTotalFromCart(items);
+        int result = service.orderTotalFromCart(items,restaurant);
         assertEquals(388,result);
     }
 
     @Test
     public void show_rate_of_selected_item_when_list_is_equal_than_1(){
-        List<String> items = null;
+        List<String> items = new ArrayList<String>();
         items.add("Vegetable lasagne");
-        int result = service.orderTotalFromCart(items);
+        int result = service.orderTotalFromCart(items, restaurant);
         assertEquals(269,result);
     }
 
     @Test
     public void show_total_when_no_item_selected_should_return_0() {
-        List<String> items = null;
-        int result = service.orderTotalFromCart(items);
+        List<String> items = new ArrayList<String>();
+        int result = service.orderTotalFromCart(items, restaurant);
         assertEquals(0,result);
     }
 
